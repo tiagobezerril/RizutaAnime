@@ -1,20 +1,46 @@
-CREATE DATABASE Rizuta;
-USE Rizuta;
+CREATE DATABASE rizuta;
+
+USE rizuta;
 
 CREATE TABLE cadastro (
-idcadastro INT PRIMARY KEY AUTO_INCREMENT,
-nome VARCHAR(50),
-email VARCHAR(50),
-senha VARCHAR(45),
-dt_nasc date,
-fklista_animme INT,
+idcadastro	INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR (50),
+email VARCHAR (50) UNIQUE,
+dt_nasc DATE,
+fklista_anime INT,
+FOREIGN KEY (fklista_anime) REFERENCES lista_anime (idlista_anime),
 fklista_manga INT,
-FOREIGN KEY (fklista_anime)
-	REFERENCES lista_total (idlista_anime)
+FOREIGN KEY (fklista_manga) REFERENCES lista_manga (idlista_manga)
+)AUTO_INCREMENT = 100;  
+
+CREATE TABLE lista_anime (
+idlista_anime INT PRIMARY KEY AUTO_INCREMENT,
+ep_atual INT,
+tem_atual INT,
+dt_inicio DATE,
+dt_fim DATE,
+fkanime INT,
+FOREIGN KEY (fkanime) REFERENCES anime (idanime)
+)AUTO_INCREMENT = 100;
+
+CREATE TABLE anime (
+idanime INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(45),
+qtd_episodio INT,
+qtd_temporada INT
+)AUTO_INCREMENT = 100;
+
+CREATE TABLE lista_manga(
+idlista_manga INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(45),
+vol_atual INT,
+fkmanga INT,
+FOREIGN KEY (fkmanga) REFERENCES manga (idmanga)
 );
 
-CREATE TABLE login (
-idlogin INT PRIMARY KEY AUTO_INCREMENT,
-nome VARCHAR(50),
-senha VARCHAR(45)
-);
+CREATE TABLE manga (
+idmanga INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(45),
+qtd_volumes  INT
+)AUTO_INCREMENT = 100;
+
