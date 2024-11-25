@@ -8,8 +8,12 @@ router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 })
 
-// router.post("/autenticar", function (req, res) {
-//     usuarioController.autenticar(req, res);
-// });
+router.post("/votar/:nomeJogo", function (req, res) {
+    votoController.votarPorNome(req, res); // invoca a função da controller para "incrementar votos por nome do jogo"
+  });
+
+router.post("/autenticar", function (req, res) {
+    usuarioController.autenticar(req, res);
+});
 
 module.exports = router;

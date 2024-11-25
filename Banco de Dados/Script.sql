@@ -17,8 +17,8 @@ CREATE TABLE lista_anime (
 idlista_anime INT PRIMARY KEY AUTO_INCREMENT,
 ep_atual INT,
 tem_atual INT,
-dt_inicio DATE,
-dt_fim DATE,
+sts_anime VARCHAR(10) 
+CONSTRAINT chKSts_anime CHECK( sts_anime IN('Completo','Assistindo','Abandonado')),
 fkanime INT,
 FOREIGN KEY (fkanime) REFERENCES anime (idanime)
 )AUTO_INCREMENT = 100;
@@ -35,6 +35,9 @@ CREATE TABLE lista_manga(
 idlista_manga INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(45),
 vol_atual INT,
+cap_atual INT,
+sts_manga VARCHAR(10) 
+CONSTRAINT chKSts_manga CHECK( sts_manga IN('Completo','Assistindo','Abandonado')),
 fkmanga INT,
 FOREIGN KEY (fkmanga) REFERENCES manga (idmanga)
 );

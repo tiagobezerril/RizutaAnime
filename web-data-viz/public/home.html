@@ -16,7 +16,8 @@
   <header>
     <h1>RizutaAnime</h1>
     <nav>
-      <a href="./index.html" class="l">Sobre nós</a>
+      <a href="./lista.html" class="l">Lista</a>
+      <a href="./index_pos_cadastro.html" class="l">Inicio</a>
     </nav>
   </header>  
 
@@ -35,7 +36,7 @@
         <div class="titulos">
         </div>
         <div class="jogos-concorrentes">
-          <div class="jogo" onclick="votarAnimalCrossing()">
+          <div class="jogo" onclick="listar('One')">
             <img
               src="./assets/imgs/capa-onepiece-arcovegapunk-anime.jpg"
               alt=""
@@ -44,11 +45,11 @@
             />
             <p>ONE PIECE</p>
           </div>
-          <div class="jogo" onclick="votarDoomEternal()">
+          <div class="jogo" onclick="listar('Black')">
             <img src="./assets/imgs/capa-blackclover-anime.jpg" alt="" width="200px" height="300px" />
             <p>BLACK CLOVER</p>
           </div>
-          <div class="jogo" onclick="votarFinalFantasy()">
+          <div class="jogo" onclick="listar('Bleach')">
             <img
               src="./assets/imgs/capa-bleach-anime.jpg"
               alt=""
@@ -57,7 +58,7 @@
             />
             <p>BLEACH</p>
           </div>
-          <div class="jogo" onclick="votarGhostTsushima()">
+          <div class="jogo" onclick="listar('Kono')">
             <img
               src="./assets/imgs/capa-KONOSUBA-anime.webp"
               alt=""
@@ -66,11 +67,11 @@
             />
             <p>KONOSUBA</p>
           </div>
-          <div class="jogo" onclick="votarHades()">
+          <div class="jogo" onclick="listar('Darling')">
             <img src="./assets/imgs/capa-darlinginthefranxx-anime.jpg" alt="" width="200px" height="300px" />
             <p>DARLING IN THE FRANXX</p>
           </div>
-          <div class="jogo" onclick="votarLastOfUs()">
+          <div class="jogo" onclick="listar('Heio')">
             <img
               src="./assets/imgs/capa-heion_sedai_no_idaten-tachi-anime.jpg"
               alt=""
@@ -90,7 +91,7 @@
               <div class="titulos">
               </div>
               <div class="jogos-concorrentes">
-                <div class="jogo" onclick="votarAnimalCrossing()">
+                <div class="jogo" onclick="listar('Jojo')">
                   <img
                     src="./assets/imgs/imgs_mangás/capa-jojo-manga.jpg"
                     alt=""
@@ -99,11 +100,11 @@
                   />
                   <p>JOJO NO KIMYOU NA BOUKEN: STEEL BALL RUN</p>
                 </div>
-                <div class="jogo" onclick="votarDoomEternal()">
+                <div class="jogo" onclick="listar('Berserk')">
                   <img src="./assets/imgs/imgs_mangás/capa-berserk-manga.jpg" alt="" width="200px" height="300px" />
                   <p>BERSERK</p>
                 </div>
-                <div class="jogo" onclick="votarFinalFantasy()">
+                <div class="jogo" onclick="listar('Naruto')">
                   <img
                     src="./assets/imgs/imgs_mangás/capa-naruto-manga.jpg"
                     alt=""
@@ -112,7 +113,7 @@
                   />
                   <p>NARUTO</p>
                 </div>
-                <div class="jogo" onclick="votarGhostTsushima()">
+                <div class="jogo" onclick="listar('Haikyuu')">
                   <img
                     src="./assets/imgs/imgs_mangás/haikyu-manga.jpg"
                     alt=""
@@ -121,11 +122,11 @@
                   />
                   <p>HAIKYUU</p>
                 </div>
-                <div class="jogo" onclick="votarHades()">
+                <div class="jogo" onclick="listar('Saga')">
                   <img src="./assets/imgs/imgs_mangás/capa-vinlandsaga-manga.webp" alt="" width="200px" height="300px" />
                   <p>VINLAND SAGA</p>
                 </div>
-                <div class="jogo" onclick="votarLastOfUs()">
+                <div class="jogo" onclick="listar('Hunter')">
                   <img
                     src="./assets/imgs/imgs_mangás/capa-hunterxhunter-manga.jpg"
                     alt=""
@@ -138,6 +139,19 @@
             </div>
      
     </section>
+
+    <div id="alerta">
+      <span class="card">
+          <span id="closeAlerta" onclick="closeAlerta()" class="material-symbols-outlined">
+              close
+          </span>
+          <span>
+             <button onclick="add_lista(nomeJogo)" class="button">Add Lista</button>
+          </span>
+      </span>
+  </div>
+
+
   </main>
 
   <footer>
@@ -172,3 +186,29 @@
   </footer>
 </body>
 </html>
+
+<script>
+
+function listar(nomeJogo) {
+  alerta.style.display = "flex";
+  }
+
+  function add_lista(nomeJogo){
+    fetch(`/votos/votar/${nomeJogo}`, {
+      method: "POST",
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log(`Voto contabilizado`);
+          atualizarGrafico();
+        } else {
+          console.error("Erro na votação ou jogo não encontrado");
+        }
+      })
+      .catch(function (error) {
+        console.error(`Erro ao realizar o voto: ${error.message}`);
+      });
+      return false;
+  }
+
+</script>

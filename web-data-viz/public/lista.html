@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>RizutaAnime</title>
+  <link rel="stylesheet" href="./css/lista.css">
+  <link rel="shortcut icon" type="image-x/icon" href="/public/assets/icon/favicon.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body>
+  <header>
+    <h1>RizutaAnime</h1>
+    <nav>
+      <a href="./home.html" class="l">Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <div class="banner">
+        <div class="container">
+          <p>Sua lista de<span> Anime</span> e <span>Mangás</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="content">
+      <table>
+        <thead>
+          <tr>
+            <th>Num.</th>
+            <th>Nome Anime</th>
+            <th>Episódios</th>
+            <th>Temporada</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Heion Sedai no Idaten Tachi Anime</td>
+            <td class="score">1</td>
+            <td class="type">12</td>
+            <td class="progress">Completo</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>One Piece</td>
+            <td class="score">24</td>
+            <td class="type">1200</td>
+            <td class="progress">Assistindo</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Darling in the Franxx</td>
+            <td class="score">1</td>
+            <td class="type">22</td>
+            <td class="progress">Completo</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Black Clover</td>
+            <td class="score">1</td>
+            <td class="type">170/170</td>
+            <td class="progress">Completo</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Bleach</td>
+            <td class="score">366/366</td>
+            <td class="type">1</td>
+            <td class="progress">Completo</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Konosuba</td>
+            <td class="score">20/20</td>
+            <td class="type">4</td>
+            <td class="progress">Completo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </section>
+    <section>
+      <div class="grafico">
+        <canvas id="myCanvas"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="rodapeEsq">
+      <p class="titulo">Fale conosco</p>
+      <p class="contato">Deixe seu contato.</p>
+      <div id="form">
+        <span>
+          <input class="input_nome" type="text" placeholder="Nome">
+          <input class="input_email" type="text" placeholder="E-mail">
+        </span>
+        <textarea class="input_comentario" placeholder="Deixe sua mensagem"></textarea>
+        <button id="contato">Enviar</button>
+      </div>
+    </div>
+    <div class="rodapeDir">
+      <div class="endereco">
+        <span class="titulo">São Paulo - SP</span>
+      </div>
+      <div class="contato">
+        <span class="titulo">Contatos</span>
+        <p>
+          tiago.bezerril@sptech.school<br>
+          <a href="https://github.com/tiagobezerril/RizutaAnime" target="_blank"
+            rel="noopener noreferrer">Github.com</a><br>
+          +55 (11) 91499-1015
+        </p>
+      </div>
+      <div class="direitos">
+        <span class="titulo">© 2024 RizutaAnime. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
