@@ -474,6 +474,64 @@ footer {
     text-align: center;
   }
 
+  * {
+    margin: 0;
+ }
+ 
+ .painel {
+    background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url('../assets/01.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 15px;
+    font-family: "Poppins", sans-serif;
+ }
+ 
+ header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+ }
+ 
+ .titulos-italicos {
+    font-style: italic;
+ }
+ 
+ .titulos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+ }
+ 
+ .titulos h1 {
+    font-size: 40px;
+ }
+ 
+ .jogos-concorrentes {
+    display: flex;
+    justify-content: space-around;
+ }
+ 
+ .jogo {
+    cursor: pointer;
+    width: 200px;
+    font-weight: 500;
+    word-wrap: break-word; 
+ }
+ 
+ .jogo:hover {
+    transform: scale(1.1);
+    transition: 0.4s;
+ }
+
   .grafico {
     height: 500px;
     display: flex;

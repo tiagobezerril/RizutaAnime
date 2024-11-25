@@ -25,6 +25,7 @@
       <div class="banner">
         <div class="container">
           <p>Sua lista de<span> Anime</span> e <span>Mangás</span>.</p>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         </div>
       </div>
     </section>
@@ -127,5 +128,90 @@
     </div>
   </footer>
 </body>
-
 </html>
+<script>
+
+   var myChartCanvas = document.getElementById("myCanvas"); // obtém o gráfico pelo ID
+
+var myChart = new Chart(myChartCanvas, {
+  type: "bar",
+  data: {
+    labels: [
+      "Animal Crossing",
+      "Doom Eternal",
+      "Final Fantasy VII Remake",
+      "Ghost of Tsushima",
+      "Hades",
+      "The Last of Us Part II",
+    ],
+    datasets: [
+      {
+        label: "Votos",
+        data: votos,
+        backgroundColor: [
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+        ],
+        borderColor: [
+          "rgba(75, 192, 192, 1)",
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+    plugins: {
+      title: {
+        display: true,
+        text: "VOTAÇÃO",
+        color: "#FFFFFF",
+        font: {
+          size: 20,
+        },
+      },
+      legend: {
+        display: true,
+        labels: {
+          color: "white",
+        },
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: "white",
+        },
+      },
+      y: {
+        ticks: {
+          color: "white",
+        },
+      },
+    },
+  },
+});
+
+function votar(gameIndex) {
+  // myChart.data.datasets[0].data[gameIndex] += 1; // nesse exemplo, não utilizaria o vetor 'votos', atualizando diretamente o índice do dado do gráfico
+
+  votos[gameIndex] += 1; // incrementa os votos do vetor de votos, de acordo com o índice do jogo recebido como parâmetro
+  atualizarGrafico(); // invoca a função para atualizar o gráfico, que altera os dados do gráfico e renderiza os dados atualizados
+  
+}
+
+function atualizarGrafico() {
+  myChart.data.datasets[0].data = votos; // atualizando dados do gráfico, com base no vetor de 'votos'
+  myChart.update(); // atualiza o gráfico, renderizando os novos dados atualizados
+  // não adianta mudar os dados do gráfico se não invocar a função "update()" para renderizar as alterações
+}
+
+</script>
