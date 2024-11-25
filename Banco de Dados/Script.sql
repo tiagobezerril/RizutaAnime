@@ -6,7 +6,7 @@ CREATE TABLE cadastro (
 idcadastro	INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR (50),
 email VARCHAR (50) UNIQUE,
-dt_nasc DATE,
+senha varchar(50),
 fklista_anime INT,
 FOREIGN KEY (fklista_anime) REFERENCES lista_anime (idlista_anime),
 fklista_manga INT,
@@ -27,7 +27,8 @@ CREATE TABLE anime (
 idanime INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(45),
 qtd_episodio INT,
-qtd_temporada INT
+qtd_temporada INT,
+sinopse varchar(200)
 )AUTO_INCREMENT = 100;
 
 CREATE TABLE lista_manga(
@@ -41,6 +42,11 @@ FOREIGN KEY (fkmanga) REFERENCES manga (idmanga)
 CREATE TABLE manga (
 idmanga INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(45),
-qtd_volumes  INT
+qtd_volumes  INT,
+qtd_capitulos INT,
+sinopse varchar(200)
 )AUTO_INCREMENT = 100;
+
+select * from cadastro;
+
 

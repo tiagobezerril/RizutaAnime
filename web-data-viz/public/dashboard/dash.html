@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="./img/logo-navegador.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="estilo.css" />
+    <title>The Game Awards</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+   
+  </body>
+</html>
+<script>
+  var votosAnimalCrossing = 0;
+  var votosDoomEternal = 0;
+  var votosFinalFantasy = 0;
+  var votosGhostTsushima = 0;
+  var votosHades = 0;
+  var votosLastOfUs = 0;
+
+  function votarAnimalCrossing() {
+    votosAnimalCrossing++;
+    atualizarGrafico();
+  }
+
+  function votarDoomEternal() {
+    votosDoomEternal++;
+    atualizarGrafico();
+  }
+
+  function votarFinalFantasy() {
+    votosFinalFantasy++;
+    atualizarGrafico();
+  }
+
+  function votarGhostTsushima() {
+    votosGhostTsushima++;
+    atualizarGrafico();
+  }
+
+  function votarHades() {
+    votosHades++;
+    atualizarGrafico();
+  }
+
+  function votarLastOfUs() {
+    votosLastOfUs++;
+    atualizarGrafico();
+  }
+
+  var myChartCanvas = document.getElementById("myCanvas");
+
+  var myChart = new Chart(myChartCanvas, {
+    type: "bar",
+    data: {
+      labels: [
+        "Animal Crossing",
+        "Doom Eternal",
+        "Final Fantasy VII Remake",
+        "Ghost of Tsushima",
+        "Hades",
+        "The Last of Us Part II",
+      ],
+      datasets: [
+        {
+          label: "Votos",
+          data: [
+            votosAnimalCrossing,
+            votosDoomEternal,
+            votosFinalFantasy,
+            votosGhostTsushima,
+            votosHades,
+            votosLastOfUs,
+          ],
+          backgroundColor: [
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+          ],
+          borderColor: [
+            "rgba(75, 192, 192, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(54, 162, 235, 1)",
+          ],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: "VOTAÇÃO",
+          color: "#FFFFFF",
+          font: {
+            size: 20,
+          },
+        },
+        legend: {
+          display: true,
+          labels: {
+            color: "white",
+          },
+        },
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: "white",
+          },
+        },
+        y: {
+          ticks: {
+            color: "white",
+          },
+        },
+      },
+    },  
+  });
+
+  function atualizarGrafico() {
+    myChart.data.datasets[0].data = [
+      votosAnimalCrossing,
+      votosDoomEternal,
+      votosFinalFantasy,
+      votosGhostTsushima,
+      votosHades,
+      votosLastOfUs,
+    ];
+    myChart.update();
+  }
+</script>

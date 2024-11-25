@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>RizutaAnime</title>
+  <link rel="stylesheet" href="./css/estilo.css">
+  <link rel="shortcut icon" type="image-x/icon" href="/public/assets/icon/favicon.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body>
+  <header>
+    <h1>RizutaAnime</h1>
+    <nav>
+      <a href="./index.html" class="l">Sobre nós</a>
+    </nav>
+  </header>  
+
+  <main>
+    <section>
+      <div class="banner">
+        <div class="container">
+          <p>Sua lista de<span> Anime</span> e <span>Mangás</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="texto-sombra">Animes</h2>
+      <!-- <div class="painel"> -->
+        <div class="titulos">
+        </div>
+        <div class="jogos-concorrentes">
+          <div class="jogo" onclick="votarAnimalCrossing()">
+            <img
+              src="./assets/imgs/capa-onepiece-arcovegapunk-anime.jpg"
+              alt=""
+              width="200px"
+              height="300px"
+            />
+            <p>ONE PIECE</p>
+          </div>
+          <div class="jogo" onclick="votarDoomEternal()">
+            <img src="./assets/imgs/capa-blackclover-anime.jpg" alt="" width="200px" height="300px" />
+            <p>BLACK CLOVER</p>
+          </div>
+          <div class="jogo" onclick="votarFinalFantasy()">
+            <img
+              src="./assets/imgs/capa-bleach-anime.jpg"
+              alt=""
+              width="200px"
+              height="300px"
+            />
+            <p>BLEACH</p>
+          </div>
+          <div class="jogo" onclick="votarGhostTsushima()">
+            <img
+              src="./assets/imgs/capa-KONOSUBA-anime.webp"
+              alt=""
+              width="200px"
+              height="300px"
+            />
+            <p>KONOSUBA</p>
+          </div>
+          <div class="jogo" onclick="votarHades()">
+            <img src="./assets/imgs/capa-darlinginthefranxx-anime.jpg" alt="" width="200px" height="300px" />
+            <p>DARLING IN THE FRANXX</p>
+          </div>
+          <div class="jogo" onclick="votarLastOfUs()">
+            <img
+              src="./assets/imgs/capa-heion_sedai_no_idaten-tachi-anime.jpg"
+              alt=""
+              width="200px"
+              height="300px"
+            />
+            <p>HEIO SEDAI NO IDATEN TACHI</p>
+          </div>
+        </div>
+      </div>
+     
+    </section>
+    <section>
+      <h2 class="texto-sombra">Mangás</h2>
+
+            <!-- <div class="painel"> -->
+              <div class="titulos">
+              </div>
+              <div class="jogos-concorrentes">
+                <div class="jogo" onclick="votarAnimalCrossing()">
+                  <img
+                    src="./assets/imgs/imgs_mangás/capa-jojo-manga.jpg"
+                    alt=""
+                    width="200px"
+                    height="300px"
+                  />
+                  <p>JOJO NO KIMYOU NA BOUKEN: STEEL BALL RUN</p>
+                </div>
+                <div class="jogo" onclick="votarDoomEternal()">
+                  <img src="./assets/imgs/imgs_mangás/capa-berserk-manga.jpg" alt="" width="200px" height="300px" />
+                  <p>BERSERK</p>
+                </div>
+                <div class="jogo" onclick="votarFinalFantasy()">
+                  <img
+                    src="./assets/imgs/imgs_mangás/capa-naruto-manga.jpg"
+                    alt=""
+                    width="200px"
+                    height="300px"
+                  />
+                  <p>NARUTO</p>
+                </div>
+                <div class="jogo" onclick="votarGhostTsushima()">
+                  <img
+                    src="./assets/imgs/imgs_mangás/haikyu-manga.jpg"
+                    alt=""
+                    width="200px"
+                    height="300px"
+                  />
+                  <p>HAIKYUU</p>
+                </div>
+                <div class="jogo" onclick="votarHades()">
+                  <img src="./assets/imgs/imgs_mangás/capa-vinlandsaga-manga.webp" alt="" width="200px" height="300px" />
+                  <p>VINLAND SAGA</p>
+                </div>
+                <div class="jogo" onclick="votarLastOfUs()">
+                  <img
+                    src="./assets/imgs/imgs_mangás/capa-hunterxhunter-manga.jpg"
+                    alt=""
+                    width="200px"
+                    height="300px"
+                  />
+                  <p>HUNTER X HUNTER</p>
+                </div>
+              </div>
+            </div>
+     
+    </section>
+  </main>
+
+  <footer>
+    <div class="rodapeEsq">
+      <p class="titulo">Fale conosco</p>
+      <p class="contato">Deixe seu contato.</p>
+      <div id="form">
+        <span>
+          <input class="input_nome" type="text" placeholder="Nome">
+          <input class="input_email" type="text" placeholder="E-mail">
+        </span>
+        <textarea class="input_comentario" placeholder="Deixe sua mensagem"></textarea>
+        <button id="contato">Enviar</button>
+      </div>
+    </div>
+    <div class="rodapeDir">
+      <div class="endereco">
+        <span class="titulo">São Paulo - SP</span>
+      </div>
+      <div class="contato">
+        <span class="titulo">Contatos</span>
+        <p>
+          tiago.bezerril@sptech.school<br>
+          <a href="https://github.com/tiagobezerril/RizutaAnime" target="_blank" rel="noopener noreferrer">Github.com</a><br>
+          +55 (11) 91499-1015
+        </p>
+      </div>
+      <div class="direitos">
+        <span class="titulo">© 2024 RizutaAnime. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

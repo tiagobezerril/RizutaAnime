@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RizutaAnime | Cadastro</title>
+
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="shortcut icon" type="image/png" href="./assets/icon/favicon.ico">
+</head>
+
+<body>
+    <header>
+        <h1 class="logo1"><a href="./index.html">RizutaAnime</a></h1>
+      </header>  
+
+    <div class="login">
+        <div class="card">
+            <span>
+                <h2>login</h2>
+                <input oninput="validarnome()" type="text" id="ipt_nomeFant" placeholder="Nome Usuario">
+                <div id="fant"></div>
+                <input oninput="validarEmail()" type="text" id="ipt_email" placeholder="E-mail">
+                <div id="ema"></div>
+                <input oninput="validarSenha()" type="password" id="ipt_senha" placeholder="Senha">
+                <div id="senhas"></div>
+
+                <button onclick="validarCadastro()">Entrar</button>
+                <div id="validado"></div>
+                <a>*Faça o entre em nossa plataforma para ter acesso total a nosso conteúdo. <br>
+                </a><a class="shadow"href="./cadastro.html">Não é cadastrado? Faça seu cadastro aqui!</a>
+            </span>
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    var correto = true
+    var abc= true
+
+
+    function validarEmail() {
+        correto = true
+        var email = ipt_email.value
+        var possui_arroba = ipt_email.value.includes("@")
+        var termina_com = email.endsWith("Sptech.School")
+        || email.endsWith('.com')
+        || email.endsWith('.br')
+        || email.endsWith('.net')
+        if (email.length > 3 && possui_arroba && termina_com ) {
+            ipt_email.style.border = "3px solid #08a708"
+        } else {
+            correto = false
+            ipt_email.style.border = "3px solid #f70000"
+        }
+    }
+
+    function validarSenha() {
+        var senha = ipt_senha.value
+        var possui_esp = ipt_senha.value.includes("!")
+            || ipt_senha.value.includes("@")
+            || ipt_senha.value.includes("#")
+            || ipt_senha.value.includes("$")
+            || ipt_senha.value.includes("%")
+            || ipt_senha.value.includes("*")
+            || ipt_senha.value.includes("&")
+        var possui_num = ipt_senha.value.includes("1")
+            || ipt_senha.value.includes("2")
+            || ipt_senha.value.includes("3")
+            || ipt_senha.value.includes("4")
+            || ipt_senha.value.includes("5")
+            || ipt_senha.value.includes("6")
+            || ipt_senha.value.includes("7")
+            || ipt_senha.value.includes("8")
+            || ipt_senha.value.includes("9")
+            || ipt_senha.value.includes("0")
+        var texto_minusculo = senha.toLowerCase()
+        var texto_maiusculo = senha.toUpperCase()
+
+        abc = (senha != texto_maiusculo && senha != texto_minusculo)
+
+        if (abc && senha.length >= 8 && possui_esp && possui_num) {
+            div_senhas.innerHTML = "Senha Válida"
+            ipt_senha.style.border = "3px solid #08a708"
+        } else {
+            div_senhas.innerHTML = "A senha deve conter no mínimo 8 caracteres, com ao menos um caractere especial, uma letra maiúscula, uma letra minúscula e um número."
+            ipt_senha.style.border = "3px solid #f70000"
+            correto = false
+        }
+    }
+
+
+    function entrar() {
+        correto = true
+        validarEmail()
+        validarSenha()
+
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value;
+
+        if (correto != true) {
+            alert("Verifique os campos preenchidos!")
+            correto = true
+        } else {
+
+            fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.idFuncionario;
+                    sessionStorage.TIPOFUNC = json.tipo;
+                    sessionStorage.RESTAURANTES = JSON.stringify(json.restaurantes[0]);
+                    sessionStorage.FILIAIS = JSON.stringify(json.filiais);
+                    sessionStorage.SENSORES = JSON.stringify(json.sensores);
+                    sessionStorage.FUNCIONARIOS = JSON.stringify(json.funcionarios);
+
+                    if (sessionStorage.TIPOFUNC == 'Supervisor'){
+                        setTimeout(function () {
+                            window.location = "login/index.html";
+                        }, 1000); // apenas para exibir o loading
+                    } else if (sessionStorage.TIPOFUNC == 'Suporte'){
+                        setTimeout(function () {
+                            window.location = "login/telaSuporte/public/index.html";
+                        }, 1000);
+                    } else {
+                        setTimeout(function () {
+                            window.location = "login/telasFuncionario/index.html";
+                        }, 1000);
+                    }
+                });
+
+            } else {
+                console.log("Houve um erro ao tentar realizar o login!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    
+    }}
+</script>
